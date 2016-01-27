@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<h:outputStylesheet name="css/styles.css" />
+	<ui:composition template="/templates/main.xhtml">
+		<ui:define name="content">
+			<h:form id="formPrincipal" enctype="multipart/form-data">
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+				<p:dataTable id="tabelaArquivo" var="arq"
+					value="#{transferirArquivos.listArquivo}"
+					rowKey="#{arq.id_arquivo}" selectionMode="single"
+					paginatorAlwaysVisible="false">
+					<p:column headerText="Nome Arquivo" style="text-align: center">
+						<h:outputText value="#{arq.nomeArquivo}" />
+					</p:column>
+					<p:column style="width:9%;text-align: center" headerText="Download">
+						<p:commandButton id="downloadLink" ajax="false"
+							icon="ui-icon-circle-arrow-s" title="Download"
+							onclick="PrimeFaces.monitorDownload(start, stop)">
+
+							<f:setPropertyActionListener value="#{arq}"
+								target="#{transferirArquivos.arquivoSelecionado}" />
+							<f:actionListener
+								binding="#{transferirArquivos.executarDownload()}" />
+							<p:fileDownload value="#{transferirArquivos.file}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@1.1.1.22:1521:wg73</property>
+    <property name="hibernate.connection.username">vendas</property>
+    <property name="hibernate.connection.password">netserver</property>
+    <property name="hibernate.show_sql">true</property>
+   	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>		
+   	<property name="hibernate.c3p0.min_size">5</property>		
+   	<property name="hibernate.c3p0.max_size">20</property>	
+   	<property name="hibernate.c3p0.timeout">300</property>	
+   	<property name="hibernate.c3p0.max_statements">300</property>	
+   	<property name="hibernate.c3p0.idle_test_period">100</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>   
+       
+   <mapping class="arquivo.Arquivo"/>
+   <mapping class="arquivolayout.ArquivoLayout"/>
+    
+  </session-factory>
+</hibernate-configuration>
